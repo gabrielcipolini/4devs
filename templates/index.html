@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Marko+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/frontend/style.css" />
+  </head>
+  <body>
+    <!-- Tela de login -->
+    <div id="acess-window" class="acess-window">
+      <button id="close">X</button>
+      <div class="left-column">
+        <img src="/assets/teste2.svg" alt="" />
+        <img
+          src="/assets/vector-login.svg"
+          alt="Ilustração de um câmera e uma mulher ajoelhada acompanhando algo."
+        />
+      </div>
+      <div class="right-column">
+        <img src="/assets/teste.svg" alt="" />
+
+        <form action="" method="">
+          <fieldset>
+            <div class="input-wrapper">
+              <!-- <label for="username">Nome</label> -->
+              <input type="text" id="username" placeholder="Nome" />
+              <!-- <label for="password">Senha</label> -->
+              <input type="password" id="password" placeholder="Senha" />
+
+              <span class="style-link">
+                <a href="#">Esqueci minha senha</a>
+              </span>
+            </div>
+
+            <button type="submit">Acessar</button>
+          </fieldset>
+        </form>
+        <div class="register-link">
+          Não tem uma conta?<a href="#">Crie agora</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="page" class="page">
+      <!-- Menu superior -->
+      <div id="navbar" class="navbar">
+        <header>
+          <h1>4Devs<span>.blog</span></h1>
+          <nav>
+            <ul>
+              <li><a href="#">Postagens</a></li>
+              <li><a href="#">Projetos</a></li>
+              <li><a href="#">História</a></li>
+              <li><a href="#">Envolvidos</a></li>
+            </ul>
+          </nav>
+          <div class="msgbtn">
+            <button id="open">Acessar</button>
+            <div id="mensagem">Acesse ou inscreva-se</div>
+          </div>
+        </header>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Constantes para identificadores
+        const openButton = document.getElementById("open")
+        const closeButton = document.getElementById("close")
+        const windowOverlay = document.getElementById("acess-window")
+        const pageOverlay = document.getElementById("page")
+        const msgopen = document.getElementById("open")
+        const msgclose = document.getElementById("close")
+        const mensagem = document.getElementById("mensagem")
+
+        // Função para manipular a exibição da janela
+        function toggleWindowVisibility(overlay, visibilityValue) {
+          overlay.style.visibility = visibilityValue
+        }
+
+        // Event listeners para a primeira seção
+        openButton.addEventListener("click", () => {
+          toggleWindowVisibility(windowOverlay, "visible")
+          windowOverlay.style.opacity = "1"
+        })
+
+        closeButton.addEventListener("click", () => {
+          toggleWindowVisibility(windowOverlay, "hidden")
+          windowOverlay.style.opacity = "0"
+        })
+
+        // Event listeners para a segunda seção
+        openButton.addEventListener("click", () => {
+          pageOverlay.style.filter =
+            "blur(10px) brightness(80%) saturate(120%)"
+          pageOverlay.style.transition = "filter 0.3s ease-in-out"
+          mensagem.style.display = "none"
+        })
+
+        closeButton.addEventListener("click", () => {
+          pageOverlay.style.filter = "none"
+        })
+
+        msgopen.addEventListener("mouseenter", () => {
+          // Exibe a mensagem quando o cursor entra na área do botão
+          mensagem.style.display = "block"
+        })
+
+        msgopen.addEventListener("mouseleave", () => {
+          // Oculta a mensagem quando o cursor sai da área do botão
+          mensagem.style.display = "none"
+        })
+      })
+    </script>
+  </body>
+</html>
