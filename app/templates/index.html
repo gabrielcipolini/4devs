@@ -11,7 +11,11 @@
       href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Marko+One&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
   </head>
   <body>
     <!-- Tela de login -->
@@ -26,14 +30,23 @@
       </div>
       <div class="right-column">
         <img src="{{ url_for('static', filename='img/teste.svg') }}" alt="" />
-
         <form action="/login" method="post">
           <fieldset>
             <div class="input-wrapper">
               <!-- <label for="username">Nome</label> -->
-              <input type="text" id="username" name="name" nameplaceholder="Nome" />
+              <input
+                type="text"
+                id="username"
+                name="name"
+                nameplaceholder="Nome"
+              />
               <!-- <label for="password">Senha</label> -->
-              <input type="password" id="password" name="senha" placeholder="Senha" />
+              <input
+                type="password"
+                id="password"
+                name="senha"
+                placeholder="Senha"
+              />
 
               <span class="style-link">
                 <a href="#">Esqueci minha senha</a>
@@ -99,8 +112,7 @@
 
         // Event listeners para a segunda seção
         openButton.addEventListener("click", () => {
-          pageOverlay.style.filter =
-            "blur(10px) brightness(80%) saturate(120%)"
+          pageOverlay.style.filter = "blur(10px) brightness(80%) saturate(120%)"
           pageOverlay.style.transition = "filter 0.3s ease-in-out"
           mensagem.style.display = "none"
         })

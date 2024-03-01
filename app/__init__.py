@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, url_for
+from flask import Flask, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
@@ -14,14 +14,15 @@ db = SQLAlchemy(app)
 from app.models.users_db import User
 from app.controllers import default
 
+
 class MyAdminIndexView(AdminIndexView):
     @expose('/')
     def index(self):
         if not current_user.is_authenticated:
             return redirect("/")
+        elif not current_user.is_admin:
+            return redirect("/")
         return super(MyAdminIndexView, self).index()
 
 admin = Admin(app, name='Admin', template_mode='bootstrap3', index_view=MyAdminIndexView())
 admin.add_view(ModelView(User, db.session))
-
-
